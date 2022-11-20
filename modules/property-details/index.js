@@ -86,8 +86,8 @@ const Detail = ({}) => {
         <AccountLabel>Valuation Change</AccountLabel>
         <RowContainer>
           <AccountList>
-            <AccountListItem><InfoText>{`Purchased for`} <strong>{account.originalPurchasePrice}</strong> {`in ${format(originalPurchasePriceDate, "do MMM yyyy")}`}</InfoText></AccountListItem>
-            <AccountListItem><InfoText>{`Since purchase`} <InfoValue isPositive={isValuePositive}>{`${sincePurchase} (${sincePurchasePercentage}%)`}</InfoValue></InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Purchased for`} <strong>£{account.originalPurchasePrice}</strong> {`in ${format(originalPurchasePriceDate, "do MMM yyyy")}`}</InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Since purchase`} <InfoValue isPositive={isValuePositive}>{`£${sincePurchase} (${sincePurchasePercentage}%)`}</InfoValue></InfoText></AccountListItem>
             <AccountListItem><InfoText>{`Annual appreciation`}<InfoValue isPositive={isValuePositive}>{`${annualAppreciation}%`}</InfoValue></InfoText></AccountListItem>
           </AccountList>
         </RowContainer>

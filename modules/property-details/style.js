@@ -52,7 +52,8 @@ export const Inset = styled.div`
 export const InfoValue = styled.span`
   color: ${(props) => props.isPositive? `#006b57` : `#55020E`};
   background-color: ${(props) => props.isPositive? `#c2f7e1` : `#ffb68c`};
-  border-radius: 5px;
+  font-weight: bold;
+  border-radius: 10px;
   padding: 0 ${(props) => props.theme.space.s};
   float: right;
 `;
