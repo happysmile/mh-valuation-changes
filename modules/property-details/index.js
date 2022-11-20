@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../../components/button";
 import RowContainer from "../../components/row-container";
 import {
-  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset
+  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, IncreasedValue, DecreasedValue
 } from "./style";
 
 
@@ -38,7 +38,13 @@ const Detail = ({}) => {
   const lastUpdate = new Date(account.lastUpdate);
   if (account.associatedMortgages.length) {
     mortgage = account.associatedMortgages[0];
-  }
+  };
+ //const sincePurchase = account.recentValuation - account.originalPurchasePrice;
+ const sincePurchase = `£202883`;
+ //const sincePurchasePercentage = sincePurchase / account.originalPurchasePrice * 100;
+ const sincePurchasePercentage = `220.5`;
+ //const annualAppreciation = sincePurchasePercentage / number of years since purchase;
+ const annualAppreciation = `13.4`;
 
   return (
     <Inset>
@@ -69,6 +75,16 @@ const Detail = ({}) => {
             <AccountListItem><InfoText>{account.name}</InfoText></AccountListItem>
             <AccountListItem><InfoText>{account.bankName}</InfoText></AccountListItem>
             <AccountListItem><InfoText>{account.postcode}</InfoText></AccountListItem>
+          </AccountList>
+        </RowContainer>
+      </AccountSection>
+      <AccountSection>
+        <AccountLabel>Valuation Change</AccountLabel>
+        <RowContainer>
+          <AccountList>
+            <AccountListItem><InfoText>{`Purchased for £92000 in July 2005`}</InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Since purchase`} <IncreasedValue>{`${sincePurchase} (${sincePurchasePercentage}%)`}</IncreasedValue></InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Annual appreciation`}<DecreasedValue>{`${annualAppreciation}%`}</DecreasedValue></InfoText></AccountListItem>
           </AccountList>
         </RowContainer>
       </AccountSection>
