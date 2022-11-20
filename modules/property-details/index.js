@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../../components/button";
 import RowContainer from "../../components/row-container";
 import {
-  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, IncreasedValue, DecreasedValue
+  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, IncreasedValue, DecreasedValue, InfoValue
 } from "./style";
 
 
@@ -39,12 +39,16 @@ const Detail = ({}) => {
   if (account.associatedMortgages.length) {
     mortgage = account.associatedMortgages[0];
   };
- //const sincePurchase = account.recentValuation - account.originalPurchasePrice;
- const sincePurchase = `£202883`;
- //const sincePurchasePercentage = sincePurchase / account.originalPurchasePrice * 100;
- const sincePurchasePercentage = `220.5`;
- //const annualAppreciation = sincePurchasePercentage / number of years since purchase;
- const annualAppreciation = `13.4`;
+  const originalPurchasePriceDate = new Date(account.originalPurchasePriceDate);
+  const sincePurchase = account.recentValuation.amount - account.originalPurchasePrice;
+  const sincePurchasePercentage = sincePurchase / account.originalPurchasePrice * 100;
+  //Improvement: move this function to dateUtils file
+  function yearsDifference(date1, date2) {
+    return date2.getFullYear() - date1.getFullYear();
+  }
+  const yearsSincePurchase = yearsDifference(originalPurchasePriceDate, lastUpdate);
+  const annualAppreciation = sincePurchasePercentage / yearsSincePurchase;
+  const isValuePositive = sincePurchase > 0;
 
   return (
     <Inset>
@@ -82,9 +86,9 @@ const Detail = ({}) => {
         <AccountLabel>Valuation Change</AccountLabel>
         <RowContainer>
           <AccountList>
-            <AccountListItem><InfoText>{`Purchased for £92000 in July 2005`}</InfoText></AccountListItem>
-            <AccountListItem><InfoText>{`Since purchase`} <IncreasedValue>{`${sincePurchase} (${sincePurchasePercentage}%)`}</IncreasedValue></InfoText></AccountListItem>
-            <AccountListItem><InfoText>{`Annual appreciation`}<DecreasedValue>{`${annualAppreciation}%`}</DecreasedValue></InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Purchased for`} <strong>{account.originalPurchasePrice}</strong> {`in ${format(originalPurchasePriceDate, "do MMM yyyy")}`}</InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Since purchase`} <InfoValue isPositive={isValuePositive}>{`${sincePurchase} (${sincePurchasePercentage}%)`}</InfoValue></InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Annual appreciation`}<InfoValue isPositive={isValuePositive}>{`${annualAppreciation}%`}</InfoValue></InfoText></AccountListItem>
           </AccountList>
         </RowContainer>
       </AccountSection>

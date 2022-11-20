@@ -49,17 +49,9 @@ export const Inset = styled.div`
   padding: 0 ${(props) => props.theme.space.m};
 `;
 
-export const IncreasedValue = styled.span`
-  color: #006b57;
-  background-color: #c2f7e1;
-  border-radius: 5px;
-  padding: 0 ${(props) => props.theme.space.s};
-  float: right;
-`;
-
-export const DecreasedValue = styled.span`
-  color: #55020E;
-  background-color: #ffb68c;
+export const InfoValue = styled.span`
+  color: ${(props) => props.isPositive? `#006b57` : `#55020E`};
+  background-color: ${(props) => props.isPositive? `#c2f7e1` : `#ffb68c`};
   border-radius: 5px;
   padding: 0 ${(props) => props.theme.space.s};
   float: right;
