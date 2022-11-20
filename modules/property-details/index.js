@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../../components/button";
 import RowContainer from "../../components/row-container";
 import {
-  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, IncreasedValue, DecreasedValue, InfoValue
+  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, InfoValue
 } from "./style";
 
 
@@ -83,7 +83,7 @@ const Detail = ({}) => {
         </RowContainer>
       </AccountSection>
       <AccountSection>
-        <AccountLabel>Valuation Change</AccountLabel>
+        <AccountLabel>Valuation Changes</AccountLabel>
         <RowContainer>
           <AccountList>
             <AccountListItem><InfoText>{`Purchased for`} <strong>£{account.originalPurchasePrice}</strong> {`in ${format(originalPurchasePriceDate, "do MMM yyyy")}`}</InfoText></AccountListItem>
