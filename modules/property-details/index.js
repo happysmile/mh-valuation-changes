@@ -42,7 +42,6 @@ const Detail = ({}) => {
   const originalPurchasePriceDate = new Date(account.originalPurchasePriceDate);
   const sincePurchase = account.recentValuation.amount - account.originalPurchasePrice;
   const sincePurchasePercentage = sincePurchase / account.originalPurchasePrice * 100;
-  //Improvement: move this function to dateUtils file
   function yearsDifference(date1, date2) {
     return date2.getFullYear() - date1.getFullYear();
   }
