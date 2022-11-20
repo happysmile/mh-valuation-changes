@@ -1,3 +1,19 @@
+* Added a "Valuation changes" section to the page
+* Tried to use existing style
+* Created style for positive but also negative change in value though only positive is needed with current data
+
+Given more time
+* Write a better yearsDifference function and check types of parameters
+* Put that function in a separate utilities file
+* Improve accessibility with markup (e.g. headings)
+* Consider refactoring, e.g. create an AccountSection component (with AccountLabel and optional AccountHeadline passed as props) or an AccountList component (passing an array of listItems).
+* Maybe even format the data into an array of objects to iterate over in order to render all AccountSections  
+* Fetch data with API
+
+
+
+
+
 # Moneyhub Tech Test - Property Details
 
 This is a prototype of a new feature in Moneyhub
@@ -29,7 +45,7 @@ Consider opportunities to reduce repetition in the code and increase legibility
 - This could be creating new components, simplifying existing ones, extracting helper function to simplify code or styling
 - Show us what you can do and implement a few of these if you have time
 
-We also ask that you update the readme with answers to the following questions 
+We also ask that you update the readme with answers to the following questions
 
 1. Given more time, what other changes you would have liked to make?
 2. What UX or design improvements or alterations might you suggest? These can be to existing components or completely new ideas.
@@ -63,7 +79,7 @@ Most of your work should take place inside the `components/` and `modules/` dire
 
 ### Notes
 
-We recommend working through the list of requirements above but don't expect you to finish all of them. We're more interested in seeing how you approach the problem than seeing a perfect example, please only spend a few hours working on it. 
+We recommend working through the list of requirements above but don't expect you to finish all of them. We're more interested in seeing how you approach the problem than seeing a perfect example, please only spend a few hours working on it.
 
 On completion, email a link to your repository to your contact at Moneyhub, and ensure it is publicly accessible.
 

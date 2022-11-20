@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const AccountList = styled.ul`
   list-style: none;
   padding-left: 0;
+  width: 100%;
 `;
 
 export const AccountLabel = styled.div`
@@ -24,6 +25,7 @@ export const InfoText = styled.div`
   line-height: 1.6;
   font-size: ${(props) => props.theme.typography.m.fontSize};
   color: ${(props) => props.theme.colors.neutral[600]};
+  width: 100%;
 `;
 
 export const AccountSection = styled.div`
@@ -45,4 +47,13 @@ export const AccountListItem = styled.div`
 
 export const Inset = styled.div`
   padding: 0 ${(props) => props.theme.space.m};
+`;
+
+export const InfoValue = styled.span`
+  color: ${(props) => props.isPositive? `#006b57` : `#55020E`};
+  background-color: ${(props) => props.isPositive? `#c2f7e1` : `#ffb68c`};
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 0 ${(props) => props.theme.space.s};
+  float: right;
 `;

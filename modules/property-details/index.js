@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../../components/button";
 import RowContainer from "../../components/row-container";
 import {
-  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset
+  AccountHeadline, AccountLabel, AccountList, AccountListItem, AccountSection, InfoText, Inset, InfoValue
 } from "./style";
 
 
@@ -38,7 +38,16 @@ const Detail = ({}) => {
   const lastUpdate = new Date(account.lastUpdate);
   if (account.associatedMortgages.length) {
     mortgage = account.associatedMortgages[0];
+  };
+  const originalPurchasePriceDate = new Date(account.originalPurchasePriceDate);
+  const sincePurchase = account.recentValuation.amount - account.originalPurchasePrice;
+  const sincePurchasePercentage = sincePurchase / account.originalPurchasePrice * 100;
+  function yearsDifference(date1, date2) {
+    return date2.getFullYear() - date1.getFullYear();
   }
+  const yearsSincePurchase = yearsDifference(originalPurchasePriceDate, lastUpdate);
+  const annualAppreciation = sincePurchasePercentage / yearsSincePurchase;
+  const isValuePositive = sincePurchase > 0;
 
   return (
     <Inset>
@@ -69,6 +78,16 @@ const Detail = ({}) => {
             <AccountListItem><InfoText>{account.name}</InfoText></AccountListItem>
             <AccountListItem><InfoText>{account.bankName}</InfoText></AccountListItem>
             <AccountListItem><InfoText>{account.postcode}</InfoText></AccountListItem>
+          </AccountList>
+        </RowContainer>
+      </AccountSection>
+      <AccountSection>
+        <AccountLabel>Valuation Changes</AccountLabel>
+        <RowContainer>
+          <AccountList>
+            <AccountListItem><InfoText>{`Purchased for`} <strong>£{account.originalPurchasePrice}</strong> {`in ${format(originalPurchasePriceDate, "do MMM yyyy")}`}</InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Since purchase`} <InfoValue isPositive={isValuePositive}>{`£${sincePurchase} (${sincePurchasePercentage}%)`}</InfoValue></InfoText></AccountListItem>
+            <AccountListItem><InfoText>{`Annual appreciation`}<InfoValue isPositive={isValuePositive}>{`${annualAppreciation}%`}</InfoValue></InfoText></AccountListItem>
           </AccountList>
         </RowContainer>
       </AccountSection>
